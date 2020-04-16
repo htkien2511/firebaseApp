@@ -65,7 +65,7 @@ class SignUpViewController: UIViewController {
                 
                 // Check error
                 if err != nil {
-                    self.showError("Error creating user.")
+                    self.showError(err!.localizedDescription)
                 }
                 else {
                     
@@ -90,7 +90,8 @@ class SignUpViewController: UIViewController {
     }
     
     func transitionToHome() {
-        let homeViewController = storyboard?.instantiateViewController(identifier: Constants.Storyboard.homeViewController)
+        let storyboard = UIStoryboard(name: "MainTabViewController", bundle: nil)
+        let homeViewController = storyboard.instantiateViewController(identifier: Constants.Storyboard.homeViewController)
         
         view.window?.rootViewController = homeViewController
         view.window?.makeKeyAndVisible()
